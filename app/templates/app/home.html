@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="section">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button is-success is-fullwidth is-medium mt-5 type=submit">
+                Submit
+            </button>
+        </form>
+    </section>
+
+    <section class="section">
+        <h1 class="title is-2">Recently Added Books</h1>
+        {% for b in books %}
+            <h1 class="title"> {{ b.title }} </h1>
+            <h2 class="subtitle"> Author: {{ b.author }} <br> Pages: {{b.pages}}</h2>
+        {% endfor %}
+    </section>
+
+{% endblock %}
